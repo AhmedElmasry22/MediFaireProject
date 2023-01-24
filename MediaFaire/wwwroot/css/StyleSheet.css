@@ -1,0 +1,40 @@
+﻿.body {
+}
+.upload {
+    min-width: 150px !important;
+    min-height: 150px !important;
+    max-width: 150px !important;
+    max-height: 150px !important;
+}
+.main-content {
+    padding-top: 130px;
+}
+    .main-content h1 {
+        color: #0091ea;
+        padding-bottom:10px
+    }
+.mu-contact-area{
+    padding-top:20px;
+    padding-bottom:20px
+}
+.mu-google-map{
+    padding-bottom:20px;
+}
+.mu-navbar-nav{
+  display:inline-flex;
+  padding-left:10px;
+}
+.mu-logo span{
+    padding-left:10px !important;
+}
+
+
+.mu-send-msg-btn {
+    margin-bottom: 20px !important;
+}
+.mu-contact-form{
+    color:red !important
+}
+.downloadbtn {
+    direction: rtl !important
+}

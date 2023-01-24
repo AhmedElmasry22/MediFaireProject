@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MediaFaire.Models.UploadsViewModel>
+
+@{ 
+    var imageContentType = new[] { "image/jpeg", "image/png" };
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-info">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Preview
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FileName)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContentSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContentType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+            @if (imageContentType.Contains(item.ContentType))
+            {
+                <img src="~/Uploads/@item.FileName" height="100" width="100"  />
+            }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+
+            </td>
+            <td>
+                @{
+                    var size = item.ContentSize / 1024;
+                    if (size < 1024)
+                    {
+                        <span>@(Math.Floor(size)) Kb</span>
+                    }
+                    else
+                    {
+                        <span>@(Math.Floor(size)/1204) Mg</span>
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteUpload", new {  id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

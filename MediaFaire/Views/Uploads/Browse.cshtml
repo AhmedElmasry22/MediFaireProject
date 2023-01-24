@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MediaFaire.Models.UploadsViewModel>
+
+<h1>Browse</h1>
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-lg-4">
+                @if (item.ContentType.Contains("imag"))
+                {
+
+                    <img src="~/Uploads/@item.FileName" class="upload" alt="...">
+                }
+
+            </div>
+            <div class="col-lg-8">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="card-title">@item.FileName</h5>
+                        </div>
+
+                        <div class="col-3">
+                            <h5>Size</h5>
+                            @{
+                                var size = item.ContentSize / 1024;
+                                if (size < 1024)
+                                {
+                                    <span>Size:@(Math.Floor(size)) Kb</span>
+                                }
+                                else
+                                {
+                                    <span>Size:@(Math.Floor(size) / 1204) Mg</span>
+                                }
+                            }
+                        </div>
+                        <div class="col-3">
+                            <h5>Downloads</h5>
+                            <p class="card-text"><small class="text-muted">@item.UploadCount</small></p>
+                        </div>
+                    </div>
+                    <p class="card-text"><small class="text-muted">@item.UploadDate</small></p>
+
+                    <div class="downloadbtn">
+                        <a asp-controller="Uploads" class="btn btn-outline-info" asp-action="Download" asp-route-FileName="@item.FileName">Download</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="text-center" style="margin-bottom:20px">
+    @{ if (ViewBag.currentPage - 1 > 0)
+        {
+    <a class="btn btn-outline-info" href="/Uploads/Browse/?RequiredPage=@(ViewBag.currentPage - 1)">Previos</a>
+        };
+        }
+    @{ if(ViewBag.pageCount > ViewBag.currentPage) { 
+         <a class="btn btn-outline-info" href="/Uploads/Browse/?RequiredPage=@(ViewBag.currentPage + 1)">Next</a>
+        };
+        }
+</div>
+

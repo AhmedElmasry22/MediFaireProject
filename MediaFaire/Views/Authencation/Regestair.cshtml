@@ -1,0 +1,48 @@
+﻿@model MediaFaire.Models.Regeister
+@inject IViewLocalizer Loc;
+@{
+    ViewData["Title"] = "Regestair";
+}
+
+<h1 class="text-center">@Loc["Regestair2"]</h1>
+
+
+
+
+
+<div class="mu-contact-content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="mu-contact-form-area">
+                <form class="mu-contact-form" asp-action="Regestair">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <div class="form-group">
+                        <span class="fa fa-envelope mu-contact-icon"></span>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="@Loc["Email2"]" id="email" required>
+                        <span asp-validation-for="Email"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="@Loc["Password2"]" id="subject" required>
+                        <span asp-validation-for="Password"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="@Loc["ConfirmPassword"]" id="subject" required>
+                        <span asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                    <button type="submit" class="mu-send-msg-btn"><span>@Loc["Regestair2"]</span></button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

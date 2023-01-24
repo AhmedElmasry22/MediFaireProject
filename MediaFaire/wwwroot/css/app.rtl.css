@@ -1,0 +1,15 @@
+﻿body[dir=rtl] {
+    font-family: 'Cairo', sans-serif !important
+}
+.mu-logo span {
+    padding-left: 10px
+}
+.mu-navbar-nav li a{
+    display:inline-flex
+}
+.input-group{
+    direction:ltr !important
+}
+.downloadbtn {
+    direction:rtl !important
+}
